@@ -1,0 +1,57 @@
+using System;
+
+public static class Mathematics
+{
+    public static double Power(double x, int y)
+    {
+        double result = 1;
+        
+        if (y > 0)
+        {
+            for (int i = 0; i < y; i++)
+            {
+                result *= x;
+            }
+        }
+        else if (y < 0)
+        {
+            for (int i = 0; i < -y; i++)
+            {
+                result *= x;
+            }
+            result = 1 / result;
+        }
+        else
+        {
+            return 1;
+        }
+
+        return result;
+    }
+
+    public static void Swap(ref int a, ref int b)
+    {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        double baseNum = 2;
+        int exponent = 3;
+        double powResult = Mathematics.Power(baseNum, exponent);
+        Console.WriteLine(powResult);
+
+        int x = 50;
+        int y = 100;
+        
+        Mathematics.Swap(ref x, ref y);
+
+        Console.WriteLine(x);
+        Console.WriteLine(y);
+    }
+}
