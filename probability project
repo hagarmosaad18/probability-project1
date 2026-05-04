@@ -1,0 +1,136 @@
+using System;
+
+class Person
+{
+    private string name;
+    private int id;
+    private string email;
+
+    public Person(string name, int id, string email)
+    {
+        Name = name;
+        Id = id;
+        Email = email;
+    }
+
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+
+    public int Id
+    {
+        get { return id; }
+        set
+        {
+            if (value > 0)
+                id = value;
+            else
+                id = 0;
+        }
+    }
+
+    public string Email
+    {
+        get { return email; }
+        set
+        {
+            if (value.Contains("@"))
+                email = value;
+            else
+                email = "Invalid Email";
+        }
+    }
+
+    public virtual void PrintInformation()
+    {
+        Console.WriteLine($"Name: {Name}, ID: {Id}, Email: {Email}");
+    }
+}
+
+class Student : Person
+{
+    private int creditHours;
+    private double gpa;
+
+    public Student(string name, int id, string email, int creditHours, double gpa)
+        : base(name, id, email)
+    {
+        CreditHours = creditHours;
+        Gpa = gpa;
+    }
+
+    public int CreditHours
+    {
+        get { return creditHours; }
+        set
+        {
+            if (value >= 0)
+                creditHours = value;
+            else
+                creditHours = 0;
+        }
+    }
+
+    public double Gpa
+    {
+        get { return gpa; }
+        set
+        {
+            if (value >= 0 && value <= 4)
+                gpa = value;
+            else
+                gpa = 0;
+        }
+    }
+
+    public override void PrintInformation()
+    {
+        base.PrintInformation();
+        Console.WriteLine($"Credit Hours: {CreditHours}, GPA: {Gpa}");
+    }
+}
+
+class Professor : Person
+{
+    private decimal salary;
+    private int yearsOfExperience;
+
+    public Professor(string name, int id, string email, decimal salary, int yearsOfExperience)
+        : base(name, id, email)
+    {
+        Salary = salary;
+        YearsOfExperience = yearsOfExperience;
+    }
+
+    public decimal Salary
+    {
+        get { return salary; }
+        set
+        {
+            if (value >= 0)
+                salary = value;
+            else
+                salary = 0;
+        }
+    }
+
+    public int YearsOfExperience
+    {
+        get { return yearsOfExperience; }
+        set
+        {
+            if (value >= 0)
+                yearsOfExperience = value;
+            else
+                yearsOfExperience = 0;
+        }
+    }
+
+    public override void PrintInformation()
+    {
+        base.PrintInformation();
+        Console.WriteLine($"Salary: {Salary}, Experience: {YearsOfExperience}");
+    }
+}
